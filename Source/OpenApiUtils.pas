@@ -639,6 +639,6 @@ end;
 
 
 initialization
-  InternalFormatSettings := TFormatSettings.Create;
+  //InternalFormatSettings := TFormatSettings.Create;
   InternalFormatSettings.DecimalSeparator := '.';
 end.
