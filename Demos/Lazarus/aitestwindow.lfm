@@ -6,9 +6,9 @@ object AITestForm: TAITestForm
   Caption = 'AI Test'
   ClientHeight = 452
   ClientWidth = 593
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  LCLVersion = '2.2.6.0'
   object Memo1: TMemo
     Left = 0
     Height = 304
@@ -35,7 +35,7 @@ object AITestForm: TAITestForm
     Top = 352
     Width = 75
     Caption = 'Button1'
-    OnClick = Button1Click
     TabOrder = 2
+    OnClick = Button1Click
   end
 end

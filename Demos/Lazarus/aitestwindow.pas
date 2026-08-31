@@ -55,6 +55,11 @@ var
 
 implementation
 
+const
+  SYSTEM_PROMPT = '';
+  OPENAI_URL = '';
+  MODEL = '';
+
 {$R *.lfm}
 
 { TAIThread }
@@ -81,10 +86,8 @@ begin
   req:=TCreateChatCompletionRequest.Create;
   try
     req.Model:=FModel;
-    // req.Messages.Add(mkmsg('system', 'You are a helpful assistant.'));
     AddMessage('system', FPrompt);
     EnterCriticalSection(FLock);
-    // req.Messages.Add(mkmsg('user', FMessage));
     AddMessage('user', FMessage);
     FMessage:='';
     LeaveCriticalSection(FLock);
@@ -92,7 +95,10 @@ begin
       req.Messages.Add(mkmsg(msg.Role, msg.Content));
     resp:=FClient.OpenAI.CreateChatCompletion(req);
     if Assigned(resp.Choices) and (resp.Choices.Count > 0) then
+    begin
       FMessage:=resp.Choices[0].Message.Content;
+      AddMessage(resp.Choices[0].Message.Role, FMessage);
+    end;
   finally
     req.Free;
     resp.Free;
@@ -159,7 +165,7 @@ end;
 
 procedure TAITestForm.FormCreate(Sender: TObject);
 begin
-  FThread:=TAIThread.Create('','qwen2.5:1.5b','http://localhost:11434/v1');
+  FThread:=TAIThread.Create(SYSTEM_PROMPT, MODEL, OPENAI_URL);
   FThread.Start;
 end;
 
