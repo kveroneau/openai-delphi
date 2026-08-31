@@ -639,6 +639,8 @@ end;
 
 
 initialization
-  //InternalFormatSettings := TFormatSettings.Create;
+  {$IFNDEF FPC}
+  InternalFormatSettings := TFormatSettings.Create;
+  {$ENDIF}
   InternalFormatSettings.DecimalSeparator := '.';
 end.

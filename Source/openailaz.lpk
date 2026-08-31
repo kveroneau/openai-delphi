@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <Package Version="5">
-    <Name Value="OpenAI"/>
+    <Name Value="OpenAILaz"/>
     <Type Value="RunTimeOnly"/>
     <CompilerOptions>
       <Version Value="11"/>

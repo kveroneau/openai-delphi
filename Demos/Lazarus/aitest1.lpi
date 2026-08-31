@@ -93,7 +93,7 @@
     </RunParams>
     <RequiredPackages>
       <Item>
-        <PackageName Value="OpenAI"/>
+        <PackageName Value="OpenAILaz"/>
       </Item>
       <Item>
         <PackageName Value="LCL"/>
